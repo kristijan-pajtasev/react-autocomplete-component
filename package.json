@@ -1,6 +1,6 @@
 {
   "name": "@kpajtasev/react-autocomplete-component",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -23,7 +23,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "parcel-bundler": "^1.9.7",
-    "react": "^16.5.0",
-    "react-dom": "^16.5.0"
+    "react": "^15.6.2",
+    "react-dom": "^15.6.2"
   }
 }
