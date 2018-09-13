@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react';
 class Autocomplete extends  PureComponent {
     constructor(props) {
         super(props);
-        this.state = { filter: "", selectedLabel: "" };
+        this.state = { filter: "", selectedLabel: "", isOpen: false };
     }
 
     onTextChange(ev) {
@@ -23,16 +23,34 @@ class Autocomplete extends  PureComponent {
             ))
     }
 
+    openDropdown() {
+        this.setState({ isOpen: true });
+    }
+
+    closeDropdown() {
+        this.timeout =  setTimeout(() => { this.setState({ isOpen: false }) }, 200);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timeout);
+    }
+
     render() {
         const { data } = this.props;
-        const { filter } = this.state;
+        const { filter, isOpen } = this.state;
 
         return (
             <div>
-                <input value={filter} onChange={this.onTextChange.bind(this)} type="text" />
-                <ul>
+                <input onFocus={this.openDropdown.bind(this)}
+                       onBlur={this.closeDropdown.bind(this)}
+                       value={filter}
+                       onChange={this.onTextChange.bind(this)}
+                       type="text" />
+                {isOpen ? (
+                    <ul>
                     {this.getOptions(data, filter)}
-                </ul>
+                    </ul>
+                ) : ""}
             </div>
         )
     }
