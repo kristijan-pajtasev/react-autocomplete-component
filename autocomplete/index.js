@@ -13,7 +13,7 @@ class Autocomplete extends  PureComponent {
 
     getOptions(data, filter) {
         return data
-            .filter(o => o.label.indexOf(filter) >= 0)
+            .filter(o => o.label.toLowerCase().indexOf(filter.toLowerCase()) >= 0)
             .map((o, i) => (
                 <li key={`autocomplete-option-${i}`}>{o.label}</li>
             ))
