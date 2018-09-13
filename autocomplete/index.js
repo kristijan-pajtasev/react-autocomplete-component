@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import Dropdown from './dropdown';
 
 class Autocomplete extends  PureComponent {
     constructor(props) {
@@ -11,17 +12,9 @@ class Autocomplete extends  PureComponent {
         this.setState({ filter });
     }
 
-    setSelected(filter) {
-        this.setState({ filter: filter.label });
-        this.props.onSelect( filter.key );
-    }
-
-    getOptions(data, filter) {
-        return data
-            .filter(o => o.label.toLowerCase().indexOf(filter.toLowerCase()) >= 0)
-            .map((o, i) => (
-                <li key={`autocomplete-option-${i}`} onClick={this.setSelected.bind(this, o)}>{o.label}</li>
-            ))
+    setSelected(option) {
+        this.setState({ filter: option.label });
+        this.props.onSelect( option.key );
     }
 
     openDropdown() {
@@ -39,6 +32,7 @@ class Autocomplete extends  PureComponent {
     render() {
         const { data, placeholder } = this.props;
         const { filter, isOpen } = this.state;
+        const options = data.filter(o => o.label.toLowerCase().indexOf(filter.toLowerCase()) >= 0);
 
         return (
             <div className="kp-autocomplete">
@@ -49,11 +43,7 @@ class Autocomplete extends  PureComponent {
                        placeholder={placeholder || ""}
                        onChange={this.onTextChange.bind(this)}
                        type="text" />
-                {isOpen ? (
-                    <ul className="kp-autocomplete-dropdown">
-                    {this.getOptions(data, filter)}
-                    </ul>
-                ) : ""}
+                <Dropdown isOpen={isOpen} options={options} setSelected={this.setSelected.bind(this)} />
             </div>
         )
     }
