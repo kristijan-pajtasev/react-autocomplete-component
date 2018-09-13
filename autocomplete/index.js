@@ -41,15 +41,16 @@ class Autocomplete extends  PureComponent {
         const { filter, isOpen } = this.state;
 
         return (
-            <div>
-                <input onFocus={this.openDropdown.bind(this)}
+            <div className="kp-autocomplete">
+                <input className="kp-autocomplete-input"
+                       onFocus={this.openDropdown.bind(this)}
                        onBlur={this.closeDropdown.bind(this)}
                        value={filter}
                        placeholder={placeholder || ""}
                        onChange={this.onTextChange.bind(this)}
                        type="text" />
                 {isOpen ? (
-                    <ul>
+                    <ul className="kp-autocomplete-dropdown">
                     {this.getOptions(data, filter)}
                     </ul>
                 ) : ""}
