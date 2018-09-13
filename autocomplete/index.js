@@ -12,7 +12,8 @@ class Autocomplete extends  PureComponent {
     }
 
     setSelected(filter) {
-        this.setState({ filter: filter.label })
+        this.setState({ filter: filter.label });
+        this.props.onSelect( filter.key );
     }
 
     getOptions(data, filter) {

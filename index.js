@@ -9,4 +9,6 @@ const data = [
     { key: 4, label: "Option 4" }
 ];
 
-ReactDOM.render(<Autocomplete data={data}/>, document.getElementById("react-container"));
+ReactDOM.render(<Autocomplete onSelect={selected => console.log(selected)}
+                              data={data}/>,
+    document.getElementById("react-container"));
