@@ -37,7 +37,7 @@ class Autocomplete extends  PureComponent {
     }
 
     render() {
-        const { data } = this.props;
+        const { data, placeholder } = this.props;
         const { filter, isOpen } = this.state;
 
         return (
@@ -45,6 +45,7 @@ class Autocomplete extends  PureComponent {
                 <input onFocus={this.openDropdown.bind(this)}
                        onBlur={this.closeDropdown.bind(this)}
                        value={filter}
+                       placeholder={placeholder || ""}
                        onChange={this.onTextChange.bind(this)}
                        type="text" />
                 {isOpen ? (
