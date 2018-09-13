@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react';
 class Autocomplete extends  PureComponent {
     constructor(props) {
         super(props);
-        this.state = { filter: "" };
+        this.state = { filter: "", selectedLabel: "" };
     }
 
     onTextChange(ev) {
@@ -11,11 +11,15 @@ class Autocomplete extends  PureComponent {
         this.setState({ filter });
     }
 
+    setSelected(filter) {
+        this.setState({ filter: filter.label })
+    }
+
     getOptions(data, filter) {
         return data
             .filter(o => o.label.toLowerCase().indexOf(filter.toLowerCase()) >= 0)
             .map((o, i) => (
-                <li key={`autocomplete-option-${i}`}>{o.label}</li>
+                <li key={`autocomplete-option-${i}`} onClick={this.setSelected.bind(this, o)}>{o.label}</li>
             ))
     }
 
@@ -25,7 +29,7 @@ class Autocomplete extends  PureComponent {
 
         return (
             <div>
-                <input onChange={this.onTextChange.bind(this)} type="text" />
+                <input value={filter} onChange={this.onTextChange.bind(this)} type="text" />
                 <ul>
                     {this.getOptions(data, filter)}
                 </ul>
