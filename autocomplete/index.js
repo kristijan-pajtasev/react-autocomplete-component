@@ -4,7 +4,12 @@ import Dropdown from './dropdown';
 class Autocomplete extends  PureComponent {
     constructor(props) {
         super(props);
-        this.state = { filter: "", selectedLabel: "", isOpen: false };
+        this.state = {
+            filter: "",
+            selectedLabel: "",
+            isOpen: false,
+            selectedItem: undefined
+        };
     }
 
     onTextChange(ev) {
@@ -30,14 +35,22 @@ class Autocomplete extends  PureComponent {
     }
 
     keyUp(ev) {
-        // console.log(ev.keyCode)
-        // 38 up
-        // 40 down
+        const { selectedItem } = this.state;
+        switch (ev.keyCode) {
+            case 38: // up key
+                if(selectedItem === undefined || selectedItem === 0) this.setState({ selectedItem: 0 });
+                else this.setState({ selectedItem: selectedItem - 1 });
+                break;
+            case 40: // down key
+                if(selectedItem === undefined) this.setState({ selectedItem: 0 });
+                else this.setState({ selectedItem: selectedItem + 1 });
+                break;
+        }
     }
 
     render() {
         const { data, placeholder } = this.props;
-        const { filter, isOpen } = this.state;
+        const { filter, isOpen, selectedItem } = this.state;
         const options = data.filter(o => o.label.toLowerCase().indexOf(filter.toLowerCase()) >= 0);
 
         return (
@@ -50,7 +63,7 @@ class Autocomplete extends  PureComponent {
                        placeholder={placeholder || ""}
                        onChange={this.onTextChange.bind(this)}
                        type="text" />
-                <Dropdown isOpen={isOpen} options={options} setSelected={this.setSelected.bind(this)} />
+                <Dropdown selectedItem={selectedItem} isOpen={isOpen} options={options} setSelected={this.setSelected.bind(this)} />
             </div>
         )
     }
