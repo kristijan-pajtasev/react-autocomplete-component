@@ -29,6 +29,12 @@ class Autocomplete extends  PureComponent {
         clearInterval(this.timeout);
     }
 
+    keyUp(ev) {
+        // console.log(ev.keyCode)
+        // 38 up
+        // 40 down
+    }
+
     render() {
         const { data, placeholder } = this.props;
         const { filter, isOpen } = this.state;
@@ -40,6 +46,7 @@ class Autocomplete extends  PureComponent {
                        onFocus={this.openDropdown.bind(this)}
                        onBlur={this.closeDropdown.bind(this)}
                        value={filter}
+                       onKeyUp={this.keyUp.bind(this)}
                        placeholder={placeholder || ""}
                        onChange={this.onTextChange.bind(this)}
                        type="text" />
