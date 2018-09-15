@@ -6,7 +6,7 @@ class Dropdown extends PureComponent {
         return data
             .map((o, i) => (
                 <li key={`autocomplete-option-${i}`} onClick={this.setSelected.bind(this, o)}>
-                    {o.label} {selectedIndex === i % total ? 'selected' : ''}
+                    {o.label} {selectedIndex % total === i ? 'selected' : ''}
                 </li>
             ))
     }
