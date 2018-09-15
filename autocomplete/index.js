@@ -8,7 +8,7 @@ class Autocomplete extends  PureComponent {
             filter: "",
             selectedLabel: "",
             isOpen: false,
-            selectedItem: undefined
+            selectedItemIndex: undefined
         };
     }
 
@@ -35,22 +35,22 @@ class Autocomplete extends  PureComponent {
     }
 
     keyUp(ev) {
-        const { selectedItem } = this.state;
+        const { selectedItemIndex } = this.state;
         switch (ev.keyCode) {
             case 38: // up key
-                if(selectedItem === undefined || selectedItem === 0) this.setState({ selectedItem: 0 });
-                else this.setState({ selectedItem: selectedItem - 1 });
+                if(selectedItemIndex === undefined || selectedItemIndex === 0) this.setState({ selectedItemIndex: 0 });
+                else this.setState({ selectedItemIndex: selectedItemIndex - 1 });
                 break;
             case 40: // down key
-                if(selectedItem === undefined) this.setState({ selectedItem: 0 });
-                else this.setState({ selectedItem: selectedItem + 1 });
+                if(selectedItemIndex === undefined) this.setState({ selectedItemIndex: 0 });
+                else this.setState({ selectedItemIndex: selectedItemIndex + 1 });
                 break;
         }
     }
 
     render() {
         const { data, placeholder } = this.props;
-        const { filter, isOpen, selectedItem } = this.state;
+        const { filter, isOpen, selectedItemIndex } = this.state;
         const options = data.filter(o => o.label.toLowerCase().indexOf(filter.toLowerCase()) >= 0);
 
         return (
@@ -63,7 +63,10 @@ class Autocomplete extends  PureComponent {
                        placeholder={placeholder || ""}
                        onChange={this.onTextChange.bind(this)}
                        type="text" />
-                <Dropdown selectedItem={selectedItem} isOpen={isOpen} options={options} setSelected={this.setSelected.bind(this)} />
+                <Dropdown selectedItemIndex={selectedItemIndex}
+                          isOpen={isOpen}
+                          options={options}
+                          setSelected={this.setSelected.bind(this)} />
             </div>
         )
     }
