@@ -18,8 +18,12 @@ class Autocomplete extends  PureComponent {
     }
 
     setSelected(option) {
-        this.setState({ filter: option.label, selectedItemIndex: undefined });
-        this.props.onSelect( option.key );
+        if(option.key === this.state.selected && option.label === this.state.filter) {
+            this.setState({ filter: option.label, selectedItemIndex: undefined });
+        } else {
+            this.setState({ filter: option.label, selectedItemIndex: undefined, selected: option.key});
+            this.props.onSelect( option.key );
+        }
     }
 
     openDropdown() {
