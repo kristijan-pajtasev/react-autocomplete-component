@@ -5,8 +5,10 @@ class Dropdown extends PureComponent {
         const total = data.length;
         return data
             .map((o, i) => (
-                <li key={`autocomplete-option-${i}`} onClick={this.setSelected.bind(this, o)}>
-                    {o.label} {selectedIndex % total === i ? 'selected' : ''}
+                <li key={`autocomplete-option-${i}`}
+                    onClick={this.setSelected.bind(this, o)}
+                    className={selectedIndex % total === i ? 'selected' : ''}>
+                    {o.label}
                 </li>
             ))
     }
