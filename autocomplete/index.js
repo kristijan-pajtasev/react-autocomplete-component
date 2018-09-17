@@ -49,6 +49,8 @@ class Autocomplete extends  PureComponent {
                 if(selectedItemIndex === undefined) this.setState({ selectedItemIndex: 0 });
                 else this.setState({ selectedItemIndex: selectedItemIndex + 1 });
                 break;
+            case 13: // enter key
+                break;
         }
     }
 
