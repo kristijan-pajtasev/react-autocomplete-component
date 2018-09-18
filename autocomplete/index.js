@@ -8,7 +8,7 @@ class Autocomplete extends  PureComponent {
             filter: "",
             selectedLabel: "",
             isOpen: false,
-            options: [],
+            options: props.data,
             selectedItemIndex: undefined
         };
     }
@@ -22,9 +22,9 @@ class Autocomplete extends  PureComponent {
 
     setSelected(option) {
         if(option.key === this.state.selected && option.label === this.state.filter) {
-            this.setState({ filter: option.label, selectedItemIndex: undefined });
+            this.setState({ filter: option.label, selectedItemIndex: undefined, isOpen: false });
         } else {
-            this.setState({ filter: option.label, selectedItemIndex: undefined, selected: option.key});
+            this.setState({ filter: option.label, selectedItemIndex: undefined, selected: option.key, isOpen: false});
             this.props.onSelect( option.key );
         }
     }
@@ -42,17 +42,20 @@ class Autocomplete extends  PureComponent {
     }
 
     keyUp(ev) {
-        const { selectedItemIndex } = this.state;
+        const { selectedItemIndex, isOpen } = this.state;
         switch (ev.keyCode) {
             case 38: // up key
-                if(selectedItemIndex === undefined || selectedItemIndex === 0) this.setState({ selectedItemIndex: 0 });
+                if((selectedItemIndex === undefined || selectedItemIndex === 0) && isOpen) this.setState({ selectedItemIndex: 0 });
                 else this.setState({ selectedItemIndex: selectedItemIndex - 1 });
                 break;
             case 40: // down key
-                if(selectedItemIndex === undefined) this.setState({ selectedItemIndex: 0 });
+                if(selectedItemIndex === undefined && isOpen) this.setState({ selectedItemIndex: 0 });
                 else this.setState({ selectedItemIndex: selectedItemIndex + 1 });
                 break;
             case 13: // enter key
+                if(this.state.isOpen && this.state.selectedItemIndex >= 0) {
+                    this.setSelected(this.state.options[this.state.selectedItemIndex]);
+                }
                 break;
         }
     }
