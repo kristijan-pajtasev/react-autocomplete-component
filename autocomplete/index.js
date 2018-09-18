@@ -8,13 +8,16 @@ class Autocomplete extends  PureComponent {
             filter: "",
             selectedLabel: "",
             isOpen: false,
+            options: [],
             selectedItemIndex: undefined
         };
     }
 
     onTextChange(ev) {
         const filter = ev.target.value;
-        this.setState({ filter });
+        this.setState({ filter,
+            options: this.props.data.filter(o => o.label.toLowerCase().indexOf(filter.toLowerCase()) >= 0)
+        });
     }
 
     setSelected(option) {
@@ -55,9 +58,8 @@ class Autocomplete extends  PureComponent {
     }
 
     render() {
-        const { data, placeholder } = this.props;
-        const { filter, isOpen, selectedItemIndex } = this.state;
-        const options = data.filter(o => o.label.toLowerCase().indexOf(filter.toLowerCase()) >= 0);
+        const { placeholder } = this.props;
+        const { filter, isOpen, selectedItemIndex, options } = this.state;
 
         return (
             <div className="kp-autocomplete">
