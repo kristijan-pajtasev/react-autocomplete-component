@@ -42,7 +42,7 @@ class Autocomplete extends  PureComponent {
     }
 
     keyUp(ev) {
-        const { selectedItemIndex, isOpen } = this.state;
+        const { selectedItemIndex, isOpen, options } = this.state;
         switch (ev.keyCode) {
             case 38: // up key
                 if((selectedItemIndex === undefined || selectedItemIndex === 0) && isOpen) this.setState({ selectedItemIndex: 0 });
@@ -53,8 +53,8 @@ class Autocomplete extends  PureComponent {
                 else this.setState({ selectedItemIndex: selectedItemIndex + 1 });
                 break;
             case 13: // enter key
-                if(this.state.isOpen && this.state.selectedItemIndex >= 0) {
-                    this.setSelected(this.state.options[this.state.selectedItemIndex]);
+                if(isOpen && selectedItemIndex >= 0) {
+                    this.setSelected(options[selectedItemIndex]);
                 }
                 break;
         }
