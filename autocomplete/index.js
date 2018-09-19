@@ -53,6 +53,7 @@ class Autocomplete extends  PureComponent {
                 else this.setState({ selectedItemIndex: selectedItemIndex + 1 });
                 break;
             case 13: // enter key
+                ev.target.blur()
                 if(isOpen && selectedItemIndex >= 0) {
                     this.setSelected(options[selectedItemIndex]);
                 }
