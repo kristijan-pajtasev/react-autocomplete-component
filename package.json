@@ -1,8 +1,9 @@
 {
   "name": "@kpajtasev/react-autocomplete-component",
-  "version": "0.0.32",
+  "version": "0.0.33",
   "description": "React autocomplete component",
   "main": "./autocomplete/index.js",
+  "keywords": ["react", "autocomplete", "auto-complete", "component", "react-component"],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel index.html -p 8081"
