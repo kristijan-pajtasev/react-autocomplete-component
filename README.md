@@ -34,7 +34,6 @@ const onSelect = key => console.log(key);
 
 <Autocomplete onSelect={key} data={data}/>
 ```
-```
 
 ### placeholder
 Placeholder for input to display when no value is selected
