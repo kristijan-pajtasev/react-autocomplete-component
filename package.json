@@ -1,6 +1,6 @@
 {
   "name": "@kpajtasev/react-autocomplete-component",
-  "version": "0.0.33",
+  "version": "1.0.0",
   "description": "React autocomplete component",
   "main": "./autocomplete/index.js",
   "keywords": ["react", "autocomplete", "auto-complete", "component", "react-component"],

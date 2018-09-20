@@ -1,5 +1,8 @@
 # react-autocomplete-component
 
+## Warning
+This package isn't already compiled and is written in es6 and JSX. Needs to be compiled for usage.
+
 ## Installation
 ```
 npm install @kpajtasev/react-autocomplete-component
