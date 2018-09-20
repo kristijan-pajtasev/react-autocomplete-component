@@ -12,7 +12,12 @@ import Autocomplete from ""@kpajtasev/react-autocomplete-component"
 <Autocomplete data={[]}/>
 ```
 
-## Props format
+### Style
+```
+import Autocomplete from ""@kpajtasev/react-autocomplete-component/autocomplete.css"
+```
+
+## Props
 
 ### Data
 ```
