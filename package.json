@@ -5,8 +5,8 @@
   "main": "./autocomplete/index.js",
   "keywords": ["react", "autocomplete", "auto-complete", "component", "react-component"],
   "scripts": {
-    "build": "parcel build autocomplete/index.js",
-    "start": "parcel index.html -p 8081",
+    "build": "parcel build autocomplete/index.js --out-dir dist",
+    "start": "parcel index.html -p 8081 --out-dir dev-test",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
