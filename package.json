@@ -1,12 +1,13 @@
 {
   "name": "@kpajtasev/react-autocomplete-component",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "React autocomplete component",
   "main": "./autocomplete/index.js",
   "keywords": ["react", "autocomplete", "auto-complete", "component", "react-component"],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel index.html -p 8081"
+    "build": "parcel build autocomplete/index.js",
+    "start": "parcel index.html -p 8081",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
