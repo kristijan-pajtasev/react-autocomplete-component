@@ -17,7 +17,7 @@ import Autocomplete from ""@kpajtasev/react-autocomplete-component"
 
 ### Style
 ```
-import Autocomplete from ""@kpajtasev/react-autocomplete-component/autocomplete.css"
+import Autocomplete from ""@kpajtasev/react-autocomplete-component/style/autocomplete.css"
 ```
 
 ## Props
