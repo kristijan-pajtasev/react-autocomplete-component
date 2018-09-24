@@ -84,4 +84,4 @@ class Autocomplete extends  PureComponent {
     }
 }
 
-export default Autocomplete;
+module.exports = Autocomplete;
