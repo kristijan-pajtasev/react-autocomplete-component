@@ -11,5 +11,6 @@ const data = [
 
 ReactDOM.render(<Autocomplete onSelect={selected => console.log(selected)}
                               placeholder={"Test placeholder"}
+                              isOpen={true}
                               data={data}/>,
     document.getElementById("react-container"));

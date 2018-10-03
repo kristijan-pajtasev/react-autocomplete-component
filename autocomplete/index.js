@@ -53,7 +53,7 @@ class Autocomplete extends  PureComponent {
                 else this.setState({ selectedItemIndex: selectedItemIndex + 1 });
                 break;
             case 13: // enter key
-                ev.target.blur()
+                ev.target.blur();
                 if(isOpen && selectedItemIndex >= 0) {
                     this.setSelected(options[selectedItemIndex]);
                 }
@@ -76,7 +76,7 @@ class Autocomplete extends  PureComponent {
                        onChange={this.onTextChange.bind(this)}
                        type="text" />
                 <Dropdown selectedItemIndex={selectedItemIndex}
-                          isOpen={isOpen}
+                          isOpen={isOpen || this.props.isOpen}
                           options={options}
                           setSelected={this.setSelected.bind(this)} />
             </div>
